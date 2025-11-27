@@ -1,6 +1,6 @@
 import clientPromise from "@/lib/mongodb";
 
-export async function POST(request) {
+export async function POST(request){
   const client = await clientPromise;
   const body = await request.json();
 
