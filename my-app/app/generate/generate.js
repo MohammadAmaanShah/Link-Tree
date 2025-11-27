@@ -43,7 +43,10 @@ const Generate = () => {
       redirect: "follow",
     };
 
-    let r = await fetch(`${NEXT_PUBLIC_HOST}/api/add`, requestOptions);
+    let r = await fetch(
+      `${process.env.NEXT_PUBLIC_HOST}/api/add`,
+      requestOptions
+    );
 
     const result = await r.json();
     if (result.success) {
