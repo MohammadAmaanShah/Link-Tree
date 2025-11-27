@@ -25,39 +25,86 @@ const Generate = () => {
   const addLink = () => {
     setLinks(links.concat([{ link: "", linktext: "" }]));
   };
+  // const submitLinks = async () => {
+  //   const myHeaders = new Headers();
+  //   myHeaders.append("Content-Type", "application/json");
+
+  //   const raw = JSON.stringify({
+  //     link: links,
+  //     pic: pic,
+  //     handle: handle,
+  //     desc: desc,
+  //   });
+
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: myHeaders,
+  //     body: raw,
+  //     redirect: "follow",
+  //   };
+
+  //   let r = await fetch(
+  //     `${process.env.NEXT_PUBLIC_HOST}/api/add`,
+  //     requestOptions
+  //   );
+
+  //   const result = await r.json();
+  //   if (result.success) {
+  //     toast.success(result.message);
+  //     setpic("");
+  //     sethandle("");
+  //     setLinks([{ link: "", linktext: "" }]);
+  //   } else {
+  //     toast.error(result.message, "wegwe");
+  //   }
+  // };
+  
   const submitLinks = async () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
-    const raw = JSON.stringify({
-      link: links,
-      pic: pic,
-      handle: handle,
-      desc: desc,
-    });
+  const raw = JSON.stringify({
+    link: links,
+    pic: pic,
+    handle: handle,
+    desc: desc,
+  });
 
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    let r = await fetch(
-      `${process.env.NEXT_PUBLIC_HOST}/api/add`,
-      requestOptions
-    );
-
-    const result = await r.json();
-    if (result.success) {
-      toast.success(result.message);
-      setpic("");
-      sethandle("");
-      setLinks([{ link: "", linktext: "" }]);
-    } else {
-      toast.error(result.message, "wegwe");
-    }
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
   };
+
+  const baseUrl = process.env.NEXT_PUBLIC_HOST || ""; // fallback for dev/prod
+  let r;
+
+  try {
+    r = await fetch(`${baseUrl}/api/add`, requestOptions);
+  } catch (err) {
+    toast.error("Could not reach server");
+    return;
+  }
+
+  let result;
+
+  try {
+    result = await r.json(); // Safe JSON parsing
+  } catch (err) {
+    toast.error("Server error: invalid JSON response");
+    return;
+  }
+
+  if (result.success) {
+    toast.success(result.message);
+    setpic("");
+    sethandle("");
+    setLinks([{ link: "", linktext: "" }]);
+  } else {
+    toast.error(result.message);
+  }
+};
+
   return (
     <div className="bg-[#E9C0E9] min-h-screen  w-100%  grid  md:grid-cols-2 grid-cols-1">
       <div className=" flex justify-center items-center flex-col  text-gray-600 pt-30 pb-15 px-10  ">
