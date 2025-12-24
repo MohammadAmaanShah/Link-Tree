@@ -71,7 +71,7 @@ export default function Home() {
               {/* {" "} */}
               {/* Your LinksTrees{" "} */}
             </p>
-            {data &&
+            {/* {data &&
               data.map((item, index) => {
                 return (
                   <div
@@ -81,7 +81,7 @@ export default function Home() {
                     <Link href={`/${item.handle}`}> {item.handle}</Link>
                   </div>
                 );
-              })}
+              })} */}
           </div>
         </div>
         <div className="flex justify-center bg-[#254f1a]  ">
