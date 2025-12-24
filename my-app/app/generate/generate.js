@@ -99,10 +99,11 @@ const Generate = () => {
 
     if (result.success) {
       toast.success(result.message);
+      route.push(`${baseUrl}/${handle}`);
       setpic("");
       sethandle("");
       setLinks([{ link: "", linktext: "" }]);
-        route.push(`${baseUrl}/${handle}`)
+      
     } else {
       toast.error(result.message);
     }
