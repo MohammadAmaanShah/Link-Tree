@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams } from "next/navigation";
+import { useRouter } from 'next/router'
 const Generate = () => {
+   const route = useRouter()
   const searchParams = useSearchParams();
 
   const [links, setLinks] = useState([{ link: "", linktext: "" }]);
@@ -100,6 +102,7 @@ const Generate = () => {
       setpic("");
       sethandle("");
       setLinks([{ link: "", linktext: "" }]);
+        route.push(`${baseUrl}/${handle}`)
     } else {
       toast.error(result.message);
     }
