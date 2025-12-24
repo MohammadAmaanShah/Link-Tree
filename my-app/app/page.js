@@ -68,8 +68,8 @@ export default function Home() {
             <p
               className={`${poppins.className} md:text-3xl text-3xl text-[#254f1a] underline`}
             >
-              {" "}
-              Your LinksTrees{" "}
+              {/* {" "} */}
+              {/* Your LinksTrees{" "} */}
             </p>
             {/* {data &&
               data.map((item, index) => {
