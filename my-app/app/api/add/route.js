@@ -19,7 +19,7 @@ export async function POST(request) {
   }
   const result = await collection.insertOne(body);
   return Response.json({
-    message: "added Successfully ",
+    message: "Your linktree has been created ",
     success: true,
     error: false,
     result: result,
