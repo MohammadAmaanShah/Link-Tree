@@ -98,8 +98,9 @@ const Generate = () => {
     }
 
     if (result.success) {
-      toast.success(result.message);
       route.push(`${baseUrl}/${handle}`);
+      console.log('this is good')
+      toast.success(result.message);
       setpic("");
       sethandle("");
       setLinks([{ link: "", linktext: "" }]);
@@ -190,7 +191,7 @@ const Generate = () => {
                 placeholder="Enter description"
               />
               <button
-                disabled={pic == "" || handle == "" || links[0].linktext == ""}
+                disabled={  handle == "" || links[0].linktext == ""}
                 onClick={() => {
                   submitLinks();
                 }}
