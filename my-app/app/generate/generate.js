@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 const Generate = () => {
-   const route = useRouter()
+   const  route = useRouter();
   const searchParams = useSearchParams();
 
   const [links, setLinks] = useState([{ link: "", linktext: "" }]);
@@ -99,7 +99,8 @@ const Generate = () => {
 
     if (result.success) {
       route.push(`${baseUrl}/${handle}`);
-      console.log('this is good')
+       route.replace(`/${handle}`);
+      console.log('this is good');
       toast.success(result.message);
       setpic("");
       sethandle("");
@@ -191,7 +192,7 @@ const Generate = () => {
                 placeholder="Enter description"
               />
               <button
-                disabled={  handle == "" || links[0].linktext == ""}
+                disabled={handle == "" || links[0].linktext == ""}
                 onClick={() => {
                   submitLinks();
                 }}
