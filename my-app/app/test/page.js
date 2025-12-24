@@ -1,5 +1,6 @@
 import React from "react";
 import { MongoClient } from "mongodb";
+import { Amarante } from "next/font/google";
 
 const page = () => {
   const client = new MongoClient(
@@ -10,7 +11,7 @@ const page = () => {
     .connect()
     .then(() => console.log("Connected!"))
     .catch(console.error, "db not connected");
-  return <>text page</>;
+  return <>text page `${}`</>;
 };
 
 export default page;
